@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f3f8ff">
+  <title>Mon Suivi Sportif — Ton plan, ton rythme</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#accueil" aria-label="Mon Suivi Sportif, accueil">
+      <span class="brand-mark"><span></span><span></span><span></span></span>
+      <span>MON SUIVI<span class="brand-light">SPORTIF</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a class="active" href="#accueil">Accueil</a>
+      <a href="#profile-title">Mon profil</a>
+      <a href="#planning-title">Planning</a>
+      <a href="#history-title">Mes séances</a>
+    </nav>
+    <a class="header-cta" href="#profile-title">Créer mon programme <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero" id="accueil">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> TON OBJECTIF. TON RYTHME.</p>
+        <h1>Le progrès se construit <span>séance après séance.</span></h1>
+        <p class="hero-description">Un suivi sportif simple pour créer une routine adaptée à ton objectif, à ton niveau et à ton quotidien.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#profile-title">Créer mon programme <span aria-hidden="true">→</span></a>
+          <a class="text-link" href="#planning-title">Voir le planning <span aria-hidden="true">↘</span></a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>01</strong><span>Ton profil</span></div>
+          <div><strong>02</strong><span>Ton objectif</span></div>
+          <div><strong>03</strong><span>Ton planning</span></div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="Illustration d'un entraînement sportif">
+        <div class="visual-glow"></div>
+        <div class="visual-circle circle-large"></div>
+        <div class="visual-circle circle-small"></div>
+        <img class="hero-human" src="athlete-human.jpg" alt="Athlète en entraînement vu de dos">
+        <div class="floating-note note-top"><span class="note-icon">↗</span><span><b>Chaque séance compte</b><small>Avance à ton rythme</small></span></div>
+        <div class="floating-note note-bottom"><span class="note-check">✓</span><span><b>Plan personnalisé</b><small>Selon ton objectif</small></span></div>
+        <div class="visual-caption">BUILD YOUR ROUTINE <span>•</span> KEEP MOVING</div>
+      </div>
+    </section>
+
+    <section class="feature-strip" aria-label="Fonctionnalités">
+      <article><span class="feature-icon">◎</span><div><h3>Un plan clair</h3><p>Une semaine organisée, jour après jour.</p></div></article>
+      <article><span class="feature-icon">↗</span><div><h3>À ton niveau</h3><p>Choisis un objectif qui te ressemble.</p></div></article>
+      <article><span class="feature-icon">▤</span><div><h3>Ton historique</h3><p>Garde une trace de tes efforts.</p></div></article>
+    </section>
+
+    <section class="section-panel profile-section" aria-labelledby="profile-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">ÉTAPE 01 / TON PROFIL</p><h2 id="profile-title">On commence par toi.</h2><p class="section-intro">Quelques informations suffisent pour préparer une semaine adaptée à ton objectif.</p></div>
+        <span class="step-count">01 <span>/ 03</span></span>
+      </div>
+      <form id="profile-form">
+        <div class="form-grid">
+          <div class="field">
+            <label for="age">Âge <span>(ans)</span></label>
+            <input id="age" name="age" type="number" min="13" max="100" placeholder="Ex. 22" required>
+          </div>
+          <div class="field">
+            <label for="weight">Poids <span>(kg)</span></label>
+            <input id="weight" name="weight" type="number" min="25" max="350" step="0.1" placeholder="Ex. 68.5" required>
+          </div>
+          <div class="field">
+            <label for="height">Taille <span>(cm)</span></label>
+            <input id="height" name="height" type="number" min="100" max="250" step="0.1" placeholder="Ex. 175" required>
+          </div>
+          <div class="field">
+            <label for="body-type">Morphologie</label>
+            <select id="body-type" name="bodyType" required>
+              <option value="">Choisir une option</option>
+              <option value="ectomorphe">Ectomorphe</option>
+              <option value="mesomorphe">Mésomorphe</option>
+              <option value="endomorphe">Endomorphe</option>
+              <option value="unknown">Je ne sais pas</option>
+            </select>
+          </div>
+        </div>
+        <div class="field goal-field">
+          <label for="goal">Quel est ton objectif principal ?</label>
+          <select id="goal" name="goal" required>
+            <option value="">Choisir un objectif</option>
+            <option value="muscle">Prendre du muscle</option>
+            <option value="fat-loss">Réduire la masse grasse</option>
+            <option value="fitness">Améliorer ma forme et mon endurance</option>
+            <option value="maintain">Maintenir ma condition physique</option>
+          </select>
+        </div>
+        <div class="form-footer"><p><span class="privacy-dot">●</span> Tes données restent dans ce navigateur.</p><button class="button button-primary" type="submit">Générer mon planning <span aria-hidden="true">→</span></button></div>
+      </form>
+      <div class="profile-controls"><button id="delete-profile" class="button button-secondary" type="button">Supprimer mon profil enregistré</button><span class="small-note">Efface l’âge, le poids, la taille et les préférences sauvegardées sur cet appareil.</span></div>
+      <div id="profile-result" class="profile-result" aria-live="polite" hidden></div>
+    </section>
+
+    <section class="section-panel" id="planning-section" aria-labelledby="planning-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">ÉTAPE 02 / PASSE À L’ACTION</p><h2 id="planning-title">Ton planning de la semaine.</h2><p class="section-intro">Un cadre pour t’aider à rester régulier. Ajuste l’intensité à ton niveau et à ta récupération.</p></div>
+        <span class="section-icon">▦</span>
+      </div>
+      <div id="weekly-plan" class="plan-grid">
+        <div class="empty-state"><span class="empty-icon">＋</span><strong>Ton planning apparaîtra ici</strong><p>Complète ton profil et choisis « Générer mon planning » pour afficher ta semaine type.</p><a href="#profile-title">Renseigner mon profil ↗</a></div>
+      </div>
+      <p class="disclaimer">À noter : les morphotypes sont des repères populaires et ne déterminent pas à eux seuls tes capacités. Commence progressivement, privilégie la technique et arrête un exercice en cas de douleur. Demande conseil à un professionnel si nécessaire.</p>
+
+      <section class="exercise-library" aria-labelledby="exercise-library-title">
+        <div class="section-heading exercise-heading">
+          <div>
+            <p class="eyebrow">GUIDE PRATIQUE</p>
+            <h2 id="exercise-library-title">Les exercices en démonstration.</h2>
+            <p class="section-intro">Clique sur le nom d’un exercice ou sur « Voir la démonstration » pour ouvrir sa recherche vidéo sur la chaîne de référence.</p>
+          </div>
+        </div>
+        <div id="exercise-list" class="exercise-grid">
+          <div class="empty-state">Génère ton planning pour afficher les exercices adaptés à ton objectif.</div>
+        </div>
+        <p class="exercise-note">Toutes les recherches de démonstration sont centralisées sur une seule chaîne : <a href="https://www.youtube.com/@NassimSahili" target="_blank" rel="noopener noreferrer">Nassim Sahili sur YouTube</a>. Une connexion Internet est nécessaire. Commence progressivement et privilégie toujours une technique correcte.</p>
+      </section>
+    </section>
+
+    <section class="section-panel" aria-labelledby="add-workout-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">ÉTAPE 03 / RESTE RÉGULIER</p><h2 id="add-workout-title">Enregistre ta séance.</h2><p class="section-intro">Ajoute l’activité que tu viens de terminer et construis ton historique au fil du temps.</p></div>
+        <span class="section-icon">↗</span>
+      </div>
+      <form id="workout-form" class="workout-form">
+        <div class="field"><label for="sport">Activité</label><input id="sport" name="sport" type="text" placeholder="Ex. Musculation, marche, vélo" required></div>
+        <div class="field"><label for="duration">Durée</label><input id="duration" name="duration" type="number" min="1" step="1" placeholder="45" required></div>
+        <div class="field"><label for="duration-unit">Unité</label><select id="duration-unit" name="duration-unit"><option value="min">Minutes</option><option value="h">Heures</option><option value="s">Secondes</option></select></div>
+        <button class="button button-primary" type="submit">Enregistrer la séance <span aria-hidden="true">＋</span></button>
+      </form>
+    </section>
+
+    <section class="section-panel" aria-labelledby="history-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">TON PARCOURS</p><h2 id="history-title">Mes séances.</h2><p class="section-intro">Tes entraînements enregistrés sur cet appareil.</p></div>
+        <span class="section-icon">↻</span>
+      </div>
+      <ul id="workout-list" class="workout-list"><li>Aucune séance enregistrée pour le moment.</li></ul>
+    </section>
+  </main>
+  <footer><a class="brand footer-brand" href="#accueil"><span class="brand-mark"><span></span><span></span><span></span></span><span>MON SUIVI<span class="brand-light">SPORTIF</span></span></a><p>Le plus important, c’est de continuer.</p><a href="#accueil">Retour en haut ↑</a></footer>
+</body>
+</html>
