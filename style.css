@@ -283,3 +283,57 @@ footer a { color: var(--green-dark); text-decoration: none; }
     min-width: 0;
   }
 }
+
+/* ==================== Connexion & compte ==================== */
+.header-actions { display: flex; align-items: center; gap: 12px; }
+.user-menu { display: inline-flex; align-items: center; gap: 10px; }
+.user-menu[hidden] { display: none; }
+.user-avatar { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #19c878, #079755); color: #fff; font-family: Manrope, sans-serif; font-size: 13px; font-weight: 800; }
+.user-name { max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); font-size: 12px; font-weight: 700; }
+.user-logout { padding: 8px 13px; border: 1px solid var(--line-strong); border-radius: 999px; background: #fff; color: #526f91; font: inherit; font-size: 11px; font-weight: 700; cursor: pointer; transition: color .2s, border-color .2s; }
+.user-logout:hover { color: var(--green-dark); border-color: #b9efd4; }
+
+body.auth-open { overflow: hidden; }
+.auth-overlay { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 20px; overflow-y: auto; background: rgba(16,45,78,.35); backdrop-filter: blur(8px); }
+.auth-overlay[hidden] { display: none; }
+.auth-card { display: grid; gap: 16px; width: min(440px, 100%); padding: 28px; border: 1px solid var(--line); border-radius: 24px; background: #fff; box-shadow: 0 24px 60px rgba(16,45,78,.22); }
+.auth-card h2 { margin: 0; font-size: clamp(24px, 4vw, 30px); line-height: 1.1; letter-spacing: -.04em; }
+.auth-intro { margin: -6px 0 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.auth-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; border-radius: 999px; background: #eef5ff; }
+.auth-tabs button { min-height: 38px; border: 0; border-radius: 999px; background: transparent; color: #526f91; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; transition: background .2s, color .2s; }
+.auth-tabs button.active { background: #fff; color: var(--green-dark); box-shadow: 0 2px 8px rgba(41,91,142,.12); }
+#auth-form { display: grid; gap: 14px; }
+.auth-remember { display: flex; align-items: center; gap: 9px; color: #294968; font-size: 12px; font-weight: 600; cursor: pointer; }
+.auth-remember input { width: 16px; min-height: 0; height: 16px; padding: 0; accent-color: var(--green); }
+.auth-error { margin: 0; padding: 10px 12px; border: 1px solid #f0c7cc; border-radius: 11px; background: #fff5f6; color: #b53f50; font-size: 12px; font-weight: 600; line-height: 1.4; }
+.auth-error[hidden], #confirm-field[hidden] { display: none; }
+#auth-submit { width: 100%; }
+#auth-submit:disabled { opacity: .6; cursor: wait; }
+.auth-note { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
+@media (max-width: 560px) {
+  .user-name { display: none; }
+  .header-actions { gap: 8px; }
+  .auth-card { padding: 22px; }
+}
+
+/* ==================== Supabase : messages & liens ==================== */
+.auth-tabs[hidden], #email-field[hidden], #forgot-button[hidden], .auth-info[hidden] { display: none; }
+.auth-info { margin: 0; padding: 10px 12px; border: 1px solid #b9efd4; border-radius: 11px; background: #eafff3; color: var(--green-dark); font-size: 12px; font-weight: 600; line-height: 1.4; }
+.auth-link { justify-self: start; padding: 0; border: 0; background: none; color: var(--green-dark); font: inherit; font-size: 12px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.toast { position: fixed; left: 50%; bottom: 24px; z-index: 200; max-width: min(420px, calc(100% - 32px)); padding: 12px 18px; border-radius: 14px; background: #102d4e; color: #fff; font-size: 13px; font-weight: 600; line-height: 1.4; box-shadow: 0 12px 30px rgba(16,45,78,.3); opacity: 0; pointer-events: none; transform: translate(-50%, 12px); transition: opacity .25s, transform .25s; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* ==================== Prénom & nom ==================== */
+.name-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.name-row[hidden] { display: none; }
+@media (max-width: 380px) { .name-row { grid-template-columns: 1fr; } }
+
+/* ==================== Bouton « Se connecter » & fermeture ==================== */
+.login-button { display: inline-flex; align-items: center; min-height: 40px; padding: 0 20px; border: 0; border-radius: 999px; background: linear-gradient(135deg, #19c878, #079755); color: #fff; font: inherit; font-size: 12px; font-weight: 800; white-space: nowrap; cursor: pointer; box-shadow: 0 8px 22px rgba(19,185,107,.18); transition: transform .2s ease, box-shadow .2s ease; }
+.login-button:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(19,185,107,.24); }
+.login-button[hidden] { display: none; }
+.auth-card { position: relative; }
+.auth-close { position: absolute; top: 14px; right: 14px; display: grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: #fff; color: #526f91; font-size: 20px; line-height: 1; cursor: pointer; transition: color .2s, border-color .2s; }
+.auth-close:hover { color: var(--green-dark); border-color: #b9efd4; }
+.guest-note .auth-link { display: inline; }
+@media (max-width: 560px) { .login-button { min-height: 36px; padding: 0 14px; font-size: 11px; } }
