@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -25,7 +26,15 @@
       <a href="#planning-title">Planning</a>
       <a href="#history-title">Mes séances</a>
     </nav>
-    <a class="header-cta" href="#profile-title">Créer mon programme <span aria-hidden="true">↗</span></a>
+    <div class="header-actions">
+      <a class="header-cta" href="#profile-title">Créer mon programme <span aria-hidden="true">↗</span></a>
+      <button class="login-button" id="login-button" type="button" aria-haspopup="dialog" hidden>Se connecter</button>
+      <div class="user-menu" id="user-menu" hidden>
+        <span class="user-avatar" id="user-avatar" aria-hidden="true"></span>
+        <span class="user-name" id="user-name"></span>
+        <button class="user-logout" id="logout-button" type="button">Déconnexion</button>
+      </div>
+    </div>
   </header>
 
   <main>
@@ -101,9 +110,9 @@
             <option value="maintain">Maintenir ma condition physique</option>
           </select>
         </div>
-        <div class="form-footer"><p><span class="privacy-dot">●</span> Tes données restent dans ce navigateur.</p><button class="button button-primary" type="submit">Générer mon planning <span aria-hidden="true">→</span></button></div>
+        <div class="form-footer"><p><span class="privacy-dot">●</span> Tes données sont enregistrées sur ton compte.</p><button class="button button-primary" type="submit">Générer mon planning <span aria-hidden="true">→</span></button></div>
       </form>
-      <div class="profile-controls"><button id="delete-profile" class="button button-secondary" type="button">Supprimer mon profil enregistré</button><span class="small-note">Efface l’âge, le poids, la taille et les préférences sauvegardées sur cet appareil.</span></div>
+      <div class="profile-controls"><button id="delete-profile" class="button button-secondary" type="button">Supprimer mon profil enregistré</button><span class="small-note">Efface l’âge, le poids, la taille et les préférences sauvegardées sur ton compte.</span></div>
       <div id="profile-result" class="profile-result" aria-live="polite" hidden></div>
     </section>
 
@@ -154,5 +163,33 @@
     </section>
   </main>
   <footer><a class="brand footer-brand" href="#accueil"><span class="brand-mark"><span></span><span></span><span></span></span><span>MON SUIVI<span class="brand-light">SPORTIF</span></span></a><p>Le plus important, c’est de continuer.</p><a href="#accueil">Retour en haut ↑</a></footer>
+
+  <!-- ==================== CONNEXION ==================== -->
+  <div id="auth-overlay" class="auth-overlay" role="dialog" aria-modal="true" aria-labelledby="auth-title" hidden>
+    <div class="auth-card">
+      <button type="button" class="auth-close" id="auth-close" aria-label="Fermer la fenêtre de connexion">×</button>
+      <span class="brand auth-brand"><span class="brand-mark"><span></span><span></span><span></span></span><span>MON SUIVI<span class="brand-light">SPORTIF</span></span></span>
+      <h2 id="auth-title">Retrouve ta progression.</h2>
+      <p class="auth-intro" id="auth-intro">Connecte-toi pour retrouver ton profil et tes séances, où que tu sois.</p>
+      <div class="auth-tabs" role="tablist" aria-label="Connexion ou inscription">
+        <button type="button" id="tab-login" class="active" role="tab" aria-selected="true">Connexion</button>
+        <button type="button" id="tab-register" role="tab" aria-selected="false">Créer un compte</button>
+      </div>
+      <form id="auth-form" novalidate>
+        <div class="name-row" id="name-fields" hidden>
+          <div class="field"><label for="auth-firstname">Prénom</label><input id="auth-firstname" name="firstname" type="text" autocomplete="given-name" placeholder="Ex. Mohamed" maxlength="50"></div>
+          <div class="field"><label for="auth-lastname">Nom</label><input id="auth-lastname" name="lastname" type="text" autocomplete="family-name" placeholder="Ex. Sy" maxlength="50"></div>
+        </div>
+        <div class="field" id="email-field"><label for="auth-email">Adresse e-mail</label><input id="auth-email" name="email" type="email" autocomplete="email" placeholder="toi@exemple.com" required></div>
+        <div class="field"><label for="auth-password" id="password-label">Mot de passe</label><input id="auth-password" name="password" type="password" autocomplete="current-password" placeholder="6 caractères minimum" required></div>
+        <div class="field" id="confirm-field" hidden><label for="auth-confirm">Confirme le mot de passe</label><input id="auth-confirm" name="confirm" type="password" autocomplete="new-password" placeholder="Répète ton mot de passe"></div>
+        <button type="button" id="forgot-button" class="auth-link">Mot de passe oublié ?</button>
+        <p id="auth-info" class="auth-info" role="status" hidden></p>
+        <p id="auth-error" class="auth-error" role="alert" hidden></p>
+        <button class="button button-primary" id="auth-submit" type="submit">Me connecter <span aria-hidden="true">→</span></button>
+      </form>
+      <p class="auth-note">Ton compte est enregistré en ligne : tu retrouves ton profil et tes séances sur tous tes appareils. Reste connecté tant que tu ne te déconnectes pas.</p>
+    </div>
+  </div>
 </body>
 </html>
